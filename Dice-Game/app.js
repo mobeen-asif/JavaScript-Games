@@ -1,22 +1,22 @@
-const player1 = document.querySelector('.player-1');
-const player2 = document.querySelector('.player-2');
+const player0 = document.querySelector('.player-1');
+const player1 = document.querySelector('.player-2');
 const dice = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn-new');
 const btnRoll = document.querySelector('.btn-roll');
 const btnHold = document.querySelector('.btn-hold');
-const score1 = document.querySelector('.score-1');
-const current1 = document.querySelector('.current-1');
-const score2 = document.querySelector('.score-2');
-const current2 = document.querySelector('.current-2');
+const score0 = document.querySelector('.score-1');
+const current0 = document.querySelector('.current-1');
+const score1 = document.querySelector('.score-2');
+const current1 = document.querySelector('.current-2');
 
 let scores = [0, 0];
-let activePlayer = 1;
+let activePlayer = 0;
 let currentScore = 0;
 let playing = true;
 
 const switchPlayer = function () {
+    player0.classList.toggle('player.active');
     player1.classList.toggle('player.active');
-    player2.classList.toggle('player.active');
     currentScore = 0;
     document.querySelector(`#current-${activePlayer}`).textContent = currentScore;
     activePlayer = activePlayer === 1 ? 2 : 1;
@@ -31,7 +31,7 @@ btnRoll.addEventListener('click', () => {
         currentScore += diceNum;
         document.querySelector(`#current-${activePlayer}`).textContent = currentScore;
     } else {
-        currentScore += diceNum;
+        currentScore += 0;
         switchPlayer();
     }
 });
