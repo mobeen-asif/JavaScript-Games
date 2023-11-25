@@ -1,26 +1,50 @@
 const resetBtn = document.querySelector('#reset');
 const checkBtn = document.querySelector('#check');
 const num = document.querySelector('#value');
-const numberToGuess = Math.ceil(Math.random() * 20);
+const msg = document.querySelector('#update');
+const scoreContent = document.querySelector('#player-score');
+const highScoreContent = document.querySelector('#highscore')
+
+let secretNumber = Math.trunc(Math.random() * 20 + 1);
+let score = 20;
+let highScore = 0;
+
+checkBtn.addEventListener('click', () => {
+    const guess = Number(num.value);
+
+    if (guess) {
+        if (guess != secretNumber) {
+
+            if (score > 1) {
+                score--;
+                scoreContent.textContent = score;
+                msg.textContent = guess > secretNumber ? 'Too High' : 'Too Low';
+                scoreContent.textContent = score
+            } else {
+                msg.textContent = "You've Lossed the Gamed";
+                document.body.style.background = '#fff'
+                document.body.style.color = 'black'
+                scoreContent.textContent = 0;
+            }
+
+        } else {
+            document.querySelector('.mark').textContent = secretNumber;
+            document.body.style.background = 'green';
+            msg.textContent = 'Correct Number!'
+            highScoreContent.textContent = score;
+        }
+
+    } else {
+        msg.textContent = 'Please Enter the number :(';
+    }
+})
 
 resetBtn.addEventListener('click', () => {
-    document.querySelector('#update').textContent = ' ';
+    score = 20;
+    secretNumber = Math.floor(Math.random() * 20) + 1;
+    scoreContent.textContent = score;
     document.body.style.background = 'black';
     document.querySelector('.mark').textContent = '?';
     num.value = ' ';
-    numberToGuess += (Math.ceil(Math.random() * 20));
-})
-
-
-checkBtn.addEventListener('click', () => {
-    const val = parseInt(num.value)
-    if (val > numberToGuess) {
-        document.querySelector('#update').textContent = 'Too High';
-    } else if (val < numberToGuess) {
-        document.querySelector('#update').textContent = 'Too low';
-    } else {
-        document.querySelector('#update').textContent = 'Correct Number';
-        document.body.style.background = 'green';
-        document.querySelector('.mark').textContent = numberToGuess;
-    }
+    msg.textContent = 'Start Guessing......';
 })

@@ -23,9 +23,8 @@ body {
 }
 
 main {
-    position: relative;
-    width: 100rem;
-    height: 55rem;
+    width: 75%;
+    height: 90%;
     background-color: rgba(255, 255, 255, 0.35);
     backdrop-filter: blur(200px);
     filter: blur();
@@ -69,19 +68,7 @@ main {
 }
 
 .active {
-    background-color: rgba(255, 255, 255, 0.4);
-}
-
-.active .name {
-    font-weight: 700;
-}
-
-.active .score {
-    font-weight: 400;
-}
-
-.active .current {
-    opacity: 1;
+    background-color: grey;
 }
 
 .current {
@@ -142,10 +129,6 @@ main {
 .btn:active {
     transform: translate(-50%, 3px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-}
-
-.btn:focus {
-    outline: none;
 }
 
 .dice {
